@@ -10,6 +10,15 @@ services:
     depends_on:
       - redis
 
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+
   redis:
     image: redis:6.2-alpine
     ports:

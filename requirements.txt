@@ -2,12 +2,27 @@
 #    uv pip compile pyproject.toml -o requirements.txt
 alembic==1.13.3
     # via mlflow
+altair==5.4.1
+    # via streamlit
+annotated-types==0.7.0
+    # via pydantic
+anyio==4.6.2.post1
+    # via starlette
+async-timeout==5.0.0
+    # via redis
+attrs==24.2.0
+    # via
+    #   jsonschema
+    #   referencing
 blinker==1.8.2
-    # via flask
+    # via
+    #   flask
+    #   streamlit
 cachetools==5.5.0
     # via
     #   google-auth
     #   mlflow-skinny
+    #   streamlit
 certifi==2024.8.30
     # via requests
 cfgv==3.4.0
@@ -18,6 +33,8 @@ click==8.1.7
     # via
     #   flask
     #   mlflow-skinny
+    #   streamlit
+    #   uvicorn
 cloudpickle==3.1.0
     # via
     #   mlflow-skinny
@@ -35,7 +52,11 @@ distlib==0.3.9
 docker==7.1.0
     # via mlflow
 exceptiongroup==1.2.2
-    # via pytest
+    # via
+    #   anyio
+    #   pytest
+fastapi==0.115.4
+    # via healthkathon-bpjs (pyproject.toml)
 filelock==3.16.1
     # via virtualenv
 flake8==7.1.1
@@ -47,7 +68,9 @@ fonttools==4.54.1
 gitdb==4.0.11
     # via gitpython
 gitpython==3.1.43
-    # via mlflow-skinny
+    # via
+    #   mlflow-skinny
+    #   streamlit
 google-auth==2.35.0
     # via databricks-sdk
 graphene==3.4.1
@@ -62,10 +85,14 @@ greenlet==3.1.1
     # via sqlalchemy
 gunicorn==23.0.0
     # via mlflow
+h11==0.14.0
+    # via uvicorn
 identify==2.6.1
     # via pre-commit
 idna==3.10
-    # via requests
+    # via
+    #   anyio
+    #   requests
 importlib-metadata==8.5.0
     # via
     #   flask
@@ -79,10 +106,16 @@ itsdangerous==2.2.0
     # via flask
 jinja2==3.1.4
     # via
+    #   altair
     #   flask
     #   mlflow
+    #   pydeck
 joblib==1.4.2
     # via scikit-learn
+jsonschema==4.23.0
+    # via altair
+jsonschema-specifications==2024.10.1
+    # via jsonschema
 kiwisolver==1.4.7
     # via matplotlib
 llvmlite==0.43.0
@@ -91,6 +124,8 @@ mako==1.3.6
     # via alembic
 markdown==3.7
     # via mlflow
+markdown-it-py==3.0.0
+    # via rich
 markupsafe==3.0.2
     # via
     #   jinja2
@@ -100,10 +135,16 @@ matplotlib==3.9.2
     # via mlflow
 mccabe==0.7.0
     # via flake8
+mdurl==0.1.2
+    # via markdown-it-py
 mlflow==2.17.2
     # via healthkathon-bpjs (pyproject.toml)
 mlflow-skinny==2.17.2
     # via mlflow
+narwhals==1.12.1
+    # via altair
+networkx==3.2.1
+    # via healthkathon-bpjs (pyproject.toml)
 nodeenv==1.9.1
     # via pre-commit
 numba==0.60.0
@@ -117,9 +158,11 @@ numpy==2.0.2
     #   numba
     #   pandas
     #   pyarrow
+    #   pydeck
     #   scikit-learn
     #   scipy
     #   shap
+    #   streamlit
     #   xgboost
 nvidia-nccl-cu12==2.23.4
     # via xgboost
@@ -133,28 +176,40 @@ opentelemetry-semantic-conventions==0.37b0
     # via opentelemetry-sdk
 packaging==24.1
     # via
+    #   altair
     #   gunicorn
     #   matplotlib
     #   mlflow-skinny
+    #   plotly
     #   pytest
     #   shap
+    #   streamlit
 pandas==2.2.3
     # via
     #   healthkathon-bpjs (pyproject.toml)
     #   mlflow
     #   shap
-pillow==11.0.0
-    # via matplotlib
+    #   streamlit
+pillow==10.4.0
+    # via
+    #   matplotlib
+    #   streamlit
 platformdirs==4.3.6
     # via virtualenv
+plotly==5.24.1
+    # via healthkathon-bpjs (pyproject.toml)
 pluggy==1.5.0
     # via pytest
 pre-commit==4.0.1
     # via healthkathon-bpjs (pyproject.toml)
 protobuf==5.28.3
-    # via mlflow-skinny
+    # via
+    #   mlflow-skinny
+    #   streamlit
 pyarrow==17.0.0
-    # via mlflow
+    # via
+    #   mlflow
+    #   streamlit
 pyasn1==0.6.1
     # via
     #   pyasn1-modules
@@ -163,8 +218,18 @@ pyasn1-modules==0.4.1
     # via google-auth
 pycodestyle==2.12.1
     # via flake8
+pydantic==2.9.2
+    # via
+    #   healthkathon-bpjs (pyproject.toml)
+    #   fastapi
+pydantic-core==2.23.4
+    # via pydantic
+pydeck==0.9.1
+    # via streamlit
 pyflakes==3.2.0
     # via flake8
+pygments==2.18.0
+    # via rich
 pyparsing==3.2.0
     # via matplotlib
 pytest==8.3.3
@@ -183,11 +248,24 @@ pyyaml==6.0.2
     #   healthkathon-bpjs (pyproject.toml)
     #   mlflow-skinny
     #   pre-commit
+redis==5.2.0
+    # via healthkathon-bpjs (pyproject.toml)
+referencing==0.35.1
+    # via
+    #   jsonschema
+    #   jsonschema-specifications
 requests==2.32.3
     # via
     #   databricks-sdk
     #   docker
     #   mlflow-skinny
+    #   streamlit
+rich==13.9.4
+    # via streamlit
+rpds-py==0.20.1
+    # via
+    #   jsonschema
+    #   referencing
 rsa==4.9
     # via google-auth
 scikit-learn==1.5.2
@@ -213,33 +291,60 @@ slicer==0.0.8
     # via shap
 smmap==5.0.1
     # via gitdb
+sniffio==1.3.1
+    # via anyio
 sqlalchemy==2.0.36
     # via
     #   alembic
     #   mlflow
 sqlparse==0.5.1
     # via mlflow-skinny
+starlette==0.41.2
+    # via fastapi
+streamlit==1.39.0
+    # via healthkathon-bpjs (pyproject.toml)
+tenacity==9.0.0
+    # via
+    #   plotly
+    #   streamlit
 threadpoolctl==3.5.0
     # via scikit-learn
+toml==0.10.2
+    # via streamlit
 tomli==2.0.2
     # via pytest
+tornado==6.4.1
+    # via streamlit
 tqdm==4.66.6
     # via shap
 typing-extensions==4.12.2
     # via
     #   alembic
+    #   altair
+    #   anyio
+    #   fastapi
     #   graphene
     #   graphql-core
     #   opentelemetry-sdk
+    #   pydantic
+    #   pydantic-core
+    #   rich
     #   sqlalchemy
+    #   starlette
+    #   streamlit
+    #   uvicorn
 tzdata==2024.2
     # via pandas
 urllib3==2.2.3
     # via
     #   docker
     #   requests
+uvicorn==0.32.0
+    # via healthkathon-bpjs (pyproject.toml)
 virtualenv==20.27.1
     # via pre-commit
+watchdog==5.0.3
+    # via streamlit
 werkzeug==3.1.1
     # via flask
 wrapt==1.16.0
