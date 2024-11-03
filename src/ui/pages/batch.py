@@ -21,7 +21,7 @@ def show():
                 for _, row in df.iterrows():
                     try:
                         response = requests.post(
-                            "http://localhost:8000/predict", json=row.to_dict()
+                            "http://api:8000/predict", json=row.to_dict()
                         )
                         result = response.json()
                         predictions.append(result)

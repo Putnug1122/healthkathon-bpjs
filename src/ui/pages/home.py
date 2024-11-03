@@ -15,7 +15,7 @@ def show():
     if data:
         with st.spinner("Making prediction..."):
             try:
-                response = requests.post("http://localhost:8000/predict", json=data)
+                response = requests.post("http://api:8000/predict", json=data)
                 result = response.json()
 
                 # Display results
